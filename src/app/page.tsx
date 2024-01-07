@@ -1,5 +1,6 @@
 // import Image from 'next/image'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Event Asinkron Indonesia',
@@ -67,7 +68,7 @@ export default async function Home() {
     <div>
       <div className={`flex flex-col gap-y-[30px]`}>
       {events.map(event => (
-          <div className={`flex flex-wrap bg-white dark:bg-gray-800 py-7 pr-7 relative`}>
+          <div key={event.id} className={`flex flex-wrap bg-white dark:bg-gray-800 py-7 pr-7 relative`}>
             { !event.status || new Date(event.dateTime) < new Date() ? (
               <div className={`disable-event absolute top-0	left-0 w-full h-full`}/>
             ) : (
@@ -86,9 +87,9 @@ export default async function Home() {
             <div className={`flex flex-1 flex-wrap items-center`}>
             <div className={`basis-full lg:basis-7/12 lg:pr-8`}>
               <h4 className={`mb-3 text-lg font-bold leading-tight tracking-tight md:mb-1 md:text-1.5xl md:leading-tight lg:leading-none`}>
-                <a className={`text-primary dark:text-white transition-colors hover:text-accent dark:hover:text-accent`} href={event.url}>
+                <Link className={`text-primary dark:text-white transition-colors hover:text-accent dark:hover:text-accent`} href={`/details/${event.url}`}>
                   {event.title}
-                </a>
+                </Link>
               </h4>
               <div className={`text-sm md:text-base lg:tracking-tight xl:text-lg xl:leading-8`}>
                 <p className={`leading-tight`}>
