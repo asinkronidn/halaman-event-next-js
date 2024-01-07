@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap');
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -15,13 +16,71 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+/* 
+@layer base {
+  html {
+    font-family: theme('colors.gray-dark'), system-ui, sans-serif;
+    color: theme('colors.gray-dark');
+  }
+} */
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+.space-section {
+  background-image: url('https://asinkron.com/content/images/size/w2000/2023/10/In-Javascript-We-Trust-Asinkron-Indonesia.png');
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+    /* padding: 2rem 1rem; */
+}
+.logo-space-img {
+  max-width: 200px;
+}
+/* .main-nav a {
+  margin-right: 7px;
+}
+.main-nav a:after {
+  content: '|';
+} */
+
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+@media (min-width: 576px) {
+
+  .container {
+    max-width: 576px;
+  }
+}
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 992px) {
+
+  .container {
+    max-width: 992px;
+  }
+}
+@media (min-width: 1210px) {
+
+  .container {
+    max-width: 1210px;
+  }
+}
+
+
+.shadow-3xl {
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 60px 0 rgba(27, 27, 41, .06);
+}
+.disable-event {
+  background-color: rgba(255, 255, 255, 0.65);
 }
