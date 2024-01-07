@@ -31,22 +31,37 @@ function formatDate(date: Date, type: string): string {
   return formatter.format(date);
 }
 
-export default function Home() {
-  const events: Array<any> = [{
-    status: true,
-    place: 'Zoom',
-    url: '/details/remix-next-step',
-    dateTime: '2024-01-13 09:30:00',
-    title: 'Remix, Next Step: Membuat Notes App',
-    description: 'Disini kita akan membahasa cara kerja remix, lalu belajar membuat notes app dengan database JSON.'
-  }, {
-    status: true,
-    place: 'Zoom',
-    url: '/details/remix-next-step',
-    dateTime: '2024-01-01 09:30:00',
-    title: 'Remix, Next Step: Membuat Notes App',
-    description: 'Disini kita akan membahasa cara kerja remix, lalu belajar membuat notes app dengan database JSON.'
-  }];
+async function getData() {
+  const res = await fetch('https://web-tools.asinkron.com/api/events')
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+ 
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+ 
+  return res.json()
+}
+
+
+export default async function Home() {
+  const events: Array<any> = await getData()
+  // const events: Array<any> = [{
+  //   status: true,
+  //   place: 'Zoom',
+  //   url: '/details/remix-next-step',
+  //   dateTime: '2024-01-13 09:30:00',
+  //   title: 'Remix, Next Step: Membuat Notes App',
+  //   description: 'Disini kita akan membahasa cara kerja remix, lalu belajar membuat notes app dengan database JSON.'
+  // }, {
+  //   status: true,
+  //   place: 'Zoom',
+  //   url: '/details/remix-next-step',
+  //   dateTime: '2024-01-01 09:30:00',
+  //   title: 'Remix, Next Step: Membuat Notes App',
+  //   description: 'Disini kita akan membahasa cara kerja remix, lalu belajar membuat notes app dengan database JSON.'
+  // }];
 
   return (
     <div>
