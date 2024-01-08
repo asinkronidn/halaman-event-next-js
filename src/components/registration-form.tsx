@@ -142,7 +142,7 @@ export default function RegistrationForm({eventDetail, submitUrl}: Props) {
                     <label className={`block text-gray-700 text-sm font-bold mb-2`} htmlFor={`phone`}>
                         Dari mana Mendapat Info Workshop Ini?*
                     </label>
-                    {['facebook', 'discord', 'email', 'whatsapp', 'instagram', 'twitter', 'website'].map((channel, index) => (
+                    {['facebook', 'discord', 'email', 'whatsapp', 'instagram', 'twitter', 'linkedin', 'website'].map((channel, index) => (
                         <div className={`flex items-center mb-4`} key={index}>
                             <input id={`country-option-${index}`} type="radio" name="dari_mana_mendapat_info_workshop" value={channel} className={`h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300`} aria-labelledby={`country-option-${index}`} aria-describedby="{`country-option-${index}`}"/>
                             <label htmlFor={`country-option-${index}`} className={`text-sm font-medium text-gray-900 ml-2 block capitalize`}>
