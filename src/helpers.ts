@@ -7,11 +7,11 @@ export function formatDate (date: Date, type: string): string {
   date = new Date(date);
   let formatter = null;
   if (type === 'hour') {
-    formatter = new Intl.DateTimeFormat('id-ID', { hour: '2-digit', minute: '2-digit' });
+    formatter = new Intl.DateTimeFormat('id-ID', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Jakarta' });
   } else if (type === 'day') {
-    formatter = new Intl.DateTimeFormat('id-ID', { day: '2-digit' });
+    formatter = new Intl.DateTimeFormat('id-ID', { day: '2-digit', timeZone: 'Asia/Jakarta' });
   } else {
-    formatter = new Intl.DateTimeFormat('id-ID', { month: 'short' });
+    formatter = new Intl.DateTimeFormat('id-ID', { month: 'short', timeZone: 'Asia/Jakarta' });
   }
   return formatter.format(date);
 }
