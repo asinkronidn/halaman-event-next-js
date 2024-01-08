@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 }
 
 async function getData() {
-  const res = await fetch('https://web-tools.asinkron.com/api/events')
+  const res = await fetch(`${process.env.BASE_API_URL}api/events`)
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
  

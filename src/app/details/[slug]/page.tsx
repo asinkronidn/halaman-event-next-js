@@ -6,7 +6,7 @@ import RegistrationForm from '../../../components/registration-form';
 
 
 export async function generateStaticParams({ params }: { params: { slug: string } }) {
-    const events = await fetch('https://web-tools.asinkron.com/api/events').then((res) => res.json())
+    const events = await fetch(`${process.env.BASE_API_URL}api/events`).then((res) => res.json())
     return events.map((event: { url: any }) => ({
         slug: event.url,
     }))

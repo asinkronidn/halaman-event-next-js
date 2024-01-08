@@ -28,7 +28,7 @@ export default function RegistrationForm({eventDetail}: Props) {
 
             // if (jsonData.event_id)
 
-            const response = await fetch('https://web-tools.asinkron.com/api/events/registration/form', {
+            const response = await fetch(`${process.env.BASE_API_URL}api/events/registration/form`, {
               method: 'POST',
               headers: {
                 'Accept': 'application/json',
