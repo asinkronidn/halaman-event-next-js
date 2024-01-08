@@ -64,7 +64,7 @@ export default async function Home() {
               ''
             )}
             <div className={`w-20 text-center md:w-24 lg:w-[140px]`}>
-              <time className={`flex flex-col items-center text-xs font-bold uppercase md:text-base`} dateTime={event.startTime}>
+              <time className={`flex flex-col items-center text-xs font-bold uppercase md:text-base`} dateTime={formatDate(event.startTime, 'full')}>
                 <span className={`text-accent`}>
                   {formatDate(event.startTime, 'month')}
                 </span>

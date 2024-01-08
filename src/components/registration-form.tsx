@@ -13,7 +13,7 @@ type Props = {
 export default function RegistrationForm({eventDetail}: Props) {
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<string | null | undefined>(null);
 
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -48,8 +48,10 @@ export default function RegistrationForm({eventDetail}: Props) {
                     setError(serializeErrorMessage('Failed to submit the data. Please try again.'));
                 }
                 return setTimeout(() => {
-                    console.log(document.querySelector('#errorMessage'))
-                    document.querySelector('#errorMessage').scrollIntoView();
+                    const errorElement = document.querySelector('#errorMessage');
+                    if (errorElement) {
+                        errorElement.scrollIntoView();
+                    }
                 }, 500)
             }
        
@@ -81,6 +83,7 @@ export default function RegistrationForm({eventDetail}: Props) {
                         Email*
                     </label>
                     <input required={true} className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`} id="email" name="email" type="email" placeholder="Email"/>
+                    <small>Silahkan isi dengan alamat email aktif.</small>
                 </div>
                 <div className={`mb-4`}>
                     <label className={`block text-gray-700 text-sm font-bold mb-2`} htmlFor={`nama`}>

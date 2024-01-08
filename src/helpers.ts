@@ -16,7 +16,7 @@ export function formatDate (date: Date, type: string): string {
   return formatter.format(date);
 }
 
-export function serializeErrorMessage (text: string): string {
+export function serializeErrorMessage (text: string): string | null | undefined {
   if (typeof text !== 'undefined') {
     const textJson = JSON.parse(text);
     if (typeof textJson.errors !== 'undefined') {
