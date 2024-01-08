@@ -4,13 +4,12 @@ import { formatDate } from '../../../helpers';
 import parse from 'html-react-parser';
 import RegistrationForm from '../../../components/registration-form';
 
-
-export async function generateStaticParams({ params }: { params: { slug: string } }) {
-    const events = await fetch(`${process.env.BASE_API_URL}api/events`).then((res) => res.json())
-    return events.map((event: { url: any }) => ({
-        slug: event.url,
-    }))
-}
+// export async function generateStaticParams({ params }: { params: { slug: string } }) {
+//     const events = await fetch(`${process.env.BASE_API_URL}api/events`).then((res) => res.json())
+//     return events.map((event: { url: any }) => ({
+//         slug: event.url,
+//     }))
+// }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const event: Event= await getData(params.slug)
@@ -136,7 +135,7 @@ export default async function EventDetail({ params }: { params: { slug: string }
                 <div className={`col-span-full md:col-start-2 md:col-end-12`}>
                     <h3 className={`mb-4 text-xl font-bold tracking-tight text-primary dark:text-white md:text-2xl lg:text-3xl mb-5 xl:text-3.5xl xl:tracking-tighter`}>Registration</h3>
                     <div className={`w-full`}>
-                        <RegistrationForm eventDetail={event}/>
+                        <RegistrationForm eventDetail={event} submitUrl={`${process.env.BASE_API_URL}api/events/registration/form`}/>
                     </div>
                 </div>
                 )}

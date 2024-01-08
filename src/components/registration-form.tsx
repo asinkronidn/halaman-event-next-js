@@ -7,10 +7,44 @@ import React, { useState, FormEvent } from 'react';
 import parse from 'html-react-parser';
 
 type Props = {
+    submitUrl: string
     eventDetail: Event;
 };
+
+// async function submitData(jsonData: object) {
+//     try {
+//         const response = await fetch(`${process.env.BASE_API_URL}api/events/registration/form`, {
+//           method: 'POST',
+//           headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//           },          
+//           body: JSON.stringify(jsonData),
+//         })
+
+//         if (!response.ok) {
+//             if (response.status === 422) {
+//                 const responseText = await response.text();
+//                 Promise.reject({
+//                     status: response.status,
+//                     error: serializeErrorMessage(responseText)
+//                 });
+//             } else {
+//                 Promise.reject({
+//                     status: response.status,
+//                     error: serializeErrorMessage('Failed to submit the data. Please try again.')
+//                 })
+//             }
+//         }
+//       } catch (error: any) {
+//         Promise.reject({
+//             status: 500,
+//             error
+//         })
+//     } 
+// }
   
-export default function RegistrationForm({eventDetail}: Props) {
+export default function RegistrationForm({eventDetail, submitUrl}: Props) {
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null | undefined>(null);
@@ -28,7 +62,7 @@ export default function RegistrationForm({eventDetail}: Props) {
 
             // if (jsonData.event_id)
 
-            const response = await fetch(`${process.env.BASE_API_URL}api/events/registration/form`, {
+            const response = await fetch(`${submitUrl}`, {
               method: 'POST',
               headers: {
                 'Accept': 'application/json',
